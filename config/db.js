@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const config = require('config');
-const settings = require('./setting');
+const db = config.get('mongoURI');
 
 const connectDateBase = async () => {
     try {
-        await mongoose.connect(settings.url, {
+        await mongoose.connect(db, {
             // useNewUrlParser: true,
             // useCreateIndex: true,
             // useFindAndModify: false,

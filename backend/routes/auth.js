@@ -1,9 +1,25 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const router = express.Router();
+const auth = require('../middleware/auth');
+
+//provide verification
+const jwt = require('jsonwebtoken');
+const config = require('config');
+
 const User = require("../models/User");
 
 const { check, validationResult } = require('express-validator/check');
+
+router.get('/', auth, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+        res.json(user);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 router.post('/', [
         check('email', 'Please include a valid email').isEmail(),
@@ -29,9 +45,26 @@ router.post('/', [
             if (!isMatch) {
                 return res.status(400).json({errors: [{msg: "Can't match"}]});
             }
-            else{
-                return res.send("You have login in");
-            }
+            // else{
+            //     return res.send("You have login in");
+            // }
+
+            //verification
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            };
+            jwt.sign(
+                payload,
+                config.get('jwtSecret'),
+                { expiresIn: 360000 },
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({ token });
+                }
+            );
+
         }catch (err) {
             console.error(err.message);
             res.status(500).send('Server error');
