@@ -53,8 +53,8 @@ router.post(
         const profileFields = {};
         profileFields.user = req.user.id;
         if (sex) profileFields.company = sex;
-        if (country) profileFields.website = country;
-        if (education) profileFields.website = education;
+        if (country) profileFields.country = country;
+        if (education) profileFields.education = education;
         if (location) profileFields.location = location;
 
         console.log(profileFields.user);
