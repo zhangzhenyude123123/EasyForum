@@ -1,19 +1,48 @@
-import { Container } from 'react-bootstrap'
-import header from './components/Header'
-import footer from './components/Footer'
+import React,{Fragment,useState,useEffect} from "react";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {useDispatch} from "react-redux";
 
-function App() {
-  return (
-      <>
-        <header/>
-        {/*<main className='py-3'>*/}
-        {/*  <Container>*/}
-            <h1>Hello World</h1>
-        {/*  </Container>*/}
-        {/*</main>*/}
-        <footer/>
-      </>
-  )
+import './App.css';
+import Header from "./components/Header";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import Form from './components/Form';
+import setAuthToken from "./tool/setAuthToken";
+// import Landing from './components/layout/Landing';
+// import Navbar from './components/layout/Navbar';
+
+import {loadUser} from "./action/auth";
+
+if (localStorage.token) {
+    setAuthToken(localStorage.token);
 }
+
+const App =() => {
+    const [currentId, setCurrentId] = useState(0);
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        // dispatch(loadUser());
+        dispatch(loadUser());
+    }, [currentId, dispatch]);
+
+    return (
+        <Router>
+            <Header/>
+            <Fragment>
+                {/*<Navbar/>*/}
+                {/*<Route exact path="/" component={Landing}/>*/}
+                <section className="container">
+                    <Switch>
+                        <Route exact path="/register" component={Register}/>
+                        <Route exact path="/login" component={Login}/>
+                    </Switch>
+                </section>
+                <Form/>
+            </Fragment>
+        </Router>
+    );
+};
+
 export default App
 
