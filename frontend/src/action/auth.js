@@ -6,7 +6,7 @@ export const loadUser = () => async(dispatch) => {
     if (localStorage.token) {
         setAuthToken(localStorage.token);
     }
-
+    console.log(localStorage.token);
     try {
         const res = await load_route();
 
@@ -30,7 +30,7 @@ export const register = ({name,email,password}) => async(dispatch) => {
     };
 
     const body = JSON.stringify({ name, email, password });
-
+    console.log(body);
     try{
         const res = await register_route(body,config);
 
@@ -39,32 +39,33 @@ export const register = ({name,email,password}) => async(dispatch) => {
             payload:res.data
         });
 
-        //dispatch(loadUser());
     }catch (err){
         // const errs = err.response.data.errors;
         //message
     }
 };
 
-export const login = (email, password) => async dispatch => {
+export const login = ({email, password}) => async (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     };
-
     const body = JSON.stringify({ email, password });
-
+    console.log(body);
     try{
         const res = await login_route(body,config);
-
         dispatch({
             type: 'LOGIN_SUCCESS',
             payload: res.data
         });
-        dispatch(loadUser());
+        // dispatch(loadUser());
     }catch (err){
-        const errors = err.response.data.errors;
-        //"message"
+        console.log(err);
     }
 }
+
+export const logout = () => dispatch => {
+    // dispatch({ type: 'CLEAR_PROFILE' });
+    dispatch({ type: 'LOGOUT' });
+};

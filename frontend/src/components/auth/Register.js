@@ -3,7 +3,7 @@ import {Link, Redirect} from "react-router-dom";
 import { useDispatch,connect } from 'react-redux';
 import {register} from "../../action/auth";
 
-const Register =() => {
+const Register =({checkR}) => {
     const dispatch = useDispatch();
 
     const[formData,setFormData] = useState({
@@ -23,14 +23,14 @@ const Register =() => {
             console.log("Passwords do not match");
         } else {
             console.log(formData);
-            // register({ name, email, password });
             dispatch(register({name, email, password}));
         }
     };
+
     // jump to the login
-    // if (isAuthenticated) {
-    //     return <Redirect to='/login' />;
-    // }
+    if (checkR) {
+        return <Redirect to='/Login' />;
+    }
 
     return (
         <Fragment>
@@ -90,8 +90,10 @@ const Register =() => {
 //     register: PropTypes.func.isRequired,
 // };
 
-// export default connect(
-//     {register}
-// )(Register);
+const GetStateData = state =>({
+    checkR:  state.auth.checkRegiste
+});
 
-export default Register
+export default connect(
+    GetStateData
+)(Register);

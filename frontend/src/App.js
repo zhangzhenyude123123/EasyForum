@@ -3,13 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {useDispatch} from "react-redux";
 
 import './App.css';
-import Header from "./components/Header";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import Form from './components/Form';
 import setAuthToken from "./tool/setAuthToken";
 // import Landing from './components/layout/Landing';
-// import Navbar from './components/layout/Navbar';
+import Navbar from './components/layout/Navbar';
 
 import {loadUser} from "./action/auth";
 
@@ -28,9 +26,9 @@ const App =() => {
 
     return (
         <Router>
-            <Header/>
+            {/*<Header/>*/}
             <Fragment>
-                {/*<Navbar/>*/}
+                <Navbar/>
                 {/*<Route exact path="/" component={Landing}/>*/}
                 <section className="container">
                     <Switch>
@@ -38,7 +36,6 @@ const App =() => {
                         <Route exact path="/login" component={Login}/>
                     </Switch>
                 </section>
-                <Form/>
             </Fragment>
         </Router>
     );

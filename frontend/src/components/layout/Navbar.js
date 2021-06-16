@@ -1,10 +1,10 @@
 import React ,{ Fragment }from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { logout } from '../../action/auth';
+import { logout } from '../../action/auth';
 import {Link} from "react-router-dom";
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({auth: { isAuthenticated, loading }, logout }) => {
     const authLinks = (
         <ul>
             <li>
@@ -31,9 +31,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     const guestLinks = (
         <ul>
             <li>
-                <Link to='/profiles'>Developers</Link>
-            </li>
-            <li>
                 <Link to='/register'>Register</Link>
             </li>
             <li>
@@ -56,6 +53,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     );
 };
 
+const GetStateData = state =>({
+    auth: state.auth
+});
 
-export default Navbar
+export default connect(
+    GetStateData,
+    { logout }
+)(Navbar);
+// export default Navbar
 
