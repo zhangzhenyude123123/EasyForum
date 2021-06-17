@@ -2,17 +2,24 @@ import * as Router from '../routers';
 
 // Get posts
 export const getPosts = () => async (dispatch) => {
-    try {
-        const res = await Router.getPosts_route();
+    const token = localStorage.token;
+    const config = {
+        headers: {
+            'x-auth-token': token
+        }
+    };
 
+    try {
+        const res = await Router.getPosts_route(config);
+        console.log(res.data);
         dispatch({
             type: 'GET_POSTS',
             payload: res.data
         });
     } catch (err) {
         dispatch({
-            type: 'POST_ERROR',
-            payload: { msg: err.response.statusText, status: err.response.status }
+            // type: 'POST_ERROR',
+            // payload: { msg: err.response.statusText, status: err.response.status }
         });
     }
 };
@@ -51,6 +58,23 @@ export const removeLike = id => async (dispatch) => {
     }
 };
 
+//addunlike
+export const addUnLike = id => async (dispatch) => {
+    try {
+        const res = await Router.addUnLike_route(id);
+
+        dispatch({
+            type: 'UPDATE_LIKES',
+            payload: { id, unlikes: res.data }
+        });
+    } catch (err) {
+        dispatch({
+            type: 'POST_ERROR',
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+
 // Add post
 export const addPost = formData => async (dispatch) => {
     const token = localStorage.token;
@@ -60,7 +84,6 @@ export const addPost = formData => async (dispatch) => {
             'x-auth-token': token
         }
     };
-    console.log(formData);
     try {
         const res = await Router.addPost_route(formData,config);
 

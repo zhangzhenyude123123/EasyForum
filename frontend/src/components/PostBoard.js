@@ -1,13 +1,15 @@
 import React, { Fragment } from 'react';
 import PostItem from "./PostItem";
-import PostForm from "./PostForm";
+import {Link} from "react-router-dom";
+import PostOne from "./PostOne";
 
 
 const PostBoard = () => {
 
     return(
         <Fragment>
-            <PostForm/>
+            <Link to='/addpost'><button>AddPost</button></Link>
+            <PostOne/>
         </Fragment>
     );
 

@@ -47,6 +47,7 @@
   },
   "proxy": "http://localhost:5000",
   "devDependencies": {
+    "@material-ui/core": "^4.11.4",
     "prop-types": "^15.7.2"
   }
 }

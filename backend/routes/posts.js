@@ -63,7 +63,6 @@ router.get('/:id', auth, async (req, res) => {
         if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !post) {
             return res.status(404).json({ msg: 'Post not found' });
         }
-
         res.json(post);
     } catch (err) {
         console.error(err.message);
@@ -92,7 +91,7 @@ router.put('/like/:id', auth, async (req, res) => {
     }
 });
 
-//unlike the post
+//cancel the like
 router.put('/unlike/:id', auth, async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
@@ -112,6 +111,26 @@ router.put('/unlike/:id', auth, async (req, res) => {
         await post.save();
 
         res.json(post.likes);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+router.put('/unlike/:id', auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+
+        // Check if the post has already been liked
+        if (post.unlikes.filter(unlike => unlike.user.toString() === req.user.id).length > 0) {
+            return res.status(400).json({ msg: 'Posts already unliked' });
+        }
+
+        post.unlikes.unshift({ user: req.user.id });
+
+        await post.save();
+
+        res.json(post.unlikes);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

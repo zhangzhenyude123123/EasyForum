@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {useDispatch} from "react-redux";
 
 import './App.css';
+import setAuthToken from "./tool/setAuthToken";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import setAuthToken from "./tool/setAuthToken";
 import Navbar from './components/layout/Navbar';
-
 import {loadUser} from "./action/auth";
 import PostBoard from "./components/PostBoard";
+import PostForm from "./components/PostForm";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -34,6 +34,7 @@ const App =() => {
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/postboard" component={PostBoard}/>
+                        <Route exact path="/addpost" component={PostForm}/>
                     </Switch>
                 </section>
             </Fragment>

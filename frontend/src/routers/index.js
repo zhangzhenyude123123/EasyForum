@@ -5,10 +5,11 @@ const authurl = url+'/api/auth';
 const registerurl = url+'/api/users';
 const posturl = url+'/api/posts';
 
-export const getPosts_route = () => axios.get(posturl);
+export const getPosts_route = (config) => axios.get(posturl,config);
 export const getPost_route = (id) => axios.put(posturl+'/${'+id+'}');
 export const addLike_route = (id) => axios.put(posturl+'/like/${'+id+'}');
 export const removeLike_route = (id) => axios.put(posturl+'/unlike/${'+id+'}');
+export const addUnLike_route = (id) => axios.put(posturl+'/unlike/${'+id+'}');
 export const addPost_route = (formData,config) => axios.post(posturl,formData,config);
 export const addComment_route = (postId,formData,config) => axios.post(posturl+'/comment/${'+postId+'}',formData,config);
 

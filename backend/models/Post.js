@@ -21,6 +21,14 @@ const PostSchema = new Schema({
       }
     }
   ],
+  unlikes: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+      }
+    }
+  ],
   comments: [
     {
       user: {
