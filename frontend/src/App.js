@@ -6,10 +6,10 @@ import './App.css';
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import setAuthToken from "./tool/setAuthToken";
-// import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 
 import {loadUser} from "./action/auth";
+import PostBoard from "./components/PostBoard";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -26,7 +26,6 @@ const App =() => {
 
     return (
         <Router>
-            {/*<Header/>*/}
             <Fragment>
                 <Navbar/>
                 {/*<Route exact path="/" component={Landing}/>*/}
@@ -34,6 +33,7 @@ const App =() => {
                     <Switch>
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/login" component={Login}/>
+                        <Route exact path="/postboard" component={PostBoard}/>
                     </Switch>
                 </section>
             </Fragment>
