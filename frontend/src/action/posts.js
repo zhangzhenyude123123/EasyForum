@@ -127,9 +127,11 @@ export const addPost = formData => async (dispatch) => {
 
 // Add comment
 export const addComment = (postId, formData) => async (dispatch) => {
+    const token = localStorage.token;
     const config = {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-auth-token': token
         }
     };
 

@@ -138,7 +138,7 @@ router.put('/unlike/:id', auth, async (req, res) => {
     }
 });
 
-//comment
+//add comment
 router.post(
     '/comment/:id',
     [
