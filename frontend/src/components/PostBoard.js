@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import PostItem from "./PostItem";
+import PostItem from "./Post/PostItem";
 import {Link} from "react-router-dom";
-import PostOne from "./PostOne";
+import PostOne from "./Post/PostOne";
 
 
 const PostBoard = () => {

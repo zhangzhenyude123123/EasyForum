@@ -1,4 +1,12 @@
 import * as Router from '../routers';
+import {disconnect} from "mongoose";
+
+export const jumpPost = () => async (dispatch) => {
+    dispatch({
+        type: 'Jump',
+        payload: 'Data'
+    });
+}
 
 // Get posts
 export const getPosts = () => async (dispatch) => {
@@ -20,6 +28,23 @@ export const getPosts = () => async (dispatch) => {
         dispatch({
             // type: 'POST_ERROR',
             // payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+
+// Get post by id
+export const getPost = id => async (dispatch) => {
+    try {
+        const res = await Router.getPost_route(id);
+
+        dispatch({
+            type: 'GET_POST',
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: 'POST_ERROR',
+            payload: { msg: err.response.statusText, status: err.response.status }
         });
     }
 };
@@ -100,22 +125,6 @@ export const addPost = formData => async (dispatch) => {
     }
 };
 
-// Get post
-export const getPost = id => async (dispatch) => {
-    try {
-        const res = await Router.getPost_route(id);
-
-        dispatch({
-            type: 'GET_POST',
-            payload: res.data
-        });
-    } catch (err) {
-        dispatch({
-            type: 'POST_ERROR',
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
-    }
-};
 
 // Add comment
 export const addComment = (postId, formData) => async (dispatch) => {

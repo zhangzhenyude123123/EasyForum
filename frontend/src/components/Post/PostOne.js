@@ -1,9 +1,11 @@
-import React, { Fragment, useEffect } from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import { Grid, CircularProgress } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import {getPosts} from "../action/posts";
+import {getPosts} from "../../action/posts";
 import {connect} from "react-redux";
 import PostItem from "./PostItem";
+import PostPage from "../PostPage";
+import {login} from "../../action/auth";
 
 
 
@@ -11,6 +13,7 @@ const PostOne = ({ getPosts, post: { posts, loading } }) => {
     useEffect(() => {
         getPosts();
     }, [getPosts]);
+
 
     if(loading){
         return(
@@ -25,21 +28,23 @@ const PostOne = ({ getPosts, post: { posts, loading } }) => {
             <p className='lead'>
                 <i className='fas fa-user' /> Your all Posts
             </p>
-            {/*<div className='posts'>*/}
-                {/*{posts.map(post => (*/}
-                {/*    <PostItem key={post._id} post={post} />*/}
-                {/*))}*/}
-            {/*</div>*/}
             <Grid container alignItems="stretch" spacing={3}>
                 {posts.map((post) => (
                     <Grid key={post._id} item xs={12} sm={6} md={6}>
-                        <PostItem post={post} />
+                        <PostItem key={post._id} post={post} />
+                        <Link to={`/posts/${post._id}`} className='btn btn-primary'>
+                            {/*Discussion{' '}*/}
+                            {/*{comments.length > 0 && (*/}
+                            {/*    <span className='comment-count'>{comments.length}</span>*/}
+                            {/*)}*/}
+                            comments
+                        </Link>
                     </Grid>
                 ))}
             </Grid>
         </Fragment>
         )
-    }
+    };
 };
 
 const GetStateData = state => ({

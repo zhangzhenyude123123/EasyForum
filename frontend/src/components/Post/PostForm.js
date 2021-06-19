@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from "react";
-import {addPost} from "../action/posts";
+import {addPost} from "../../action/posts";
 import {connect, useDispatch} from 'react-redux';
 
 const PostForm = () =>{

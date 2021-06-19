@@ -6,7 +6,6 @@ const { check, validationResult } = require('express-validator');
 
 const Profile = require('../models/Profile');
 const User = require('../models/User');
-// const Posts = require('../models/Posts');
 
 router.get('/me', auth, async (req, res) => {
     try {
@@ -14,9 +13,18 @@ router.get('/me', auth, async (req, res) => {
             'user',
             'name'
         );
-
         if (!profile) {
-            return res.status(400).json({ msg: 'There is no profile for this user' });
+            // return res.status(400).json({ msg: 'There is no profile for this user' });
+            const data = {
+                _id: null,
+                user: null,
+                __v: 0,
+                    location: null,
+                country: null,
+                education: null,
+                date: null
+            }
+            return res.json(data);
         }
 
         res.json(profile);
@@ -57,8 +65,8 @@ router.post(
         if (education) profileFields.education = education;
         if (location) profileFields.location = location;
 
-        console.log(profileFields.user);
-        res.send("heheoe");
+        // console.log(profileFields.user);
+
         try {
             // Using upsert option (creates new doc if no match is found):
             let profile = await Profile.findOneAndUpdate(

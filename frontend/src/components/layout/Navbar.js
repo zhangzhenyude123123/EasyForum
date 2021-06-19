@@ -8,15 +8,15 @@ const Navbar = ({auth: { isAuthenticated, loading }, logout }) => {
     const authLinks = (
         <ul>
             <li>
-                <Link to='/profiles'>Developers</Link>
+                <Link to='/'>Community</Link>
             </li>
             <li>
-                <Link to='/postboard'>Posts</Link>
+                <Link to='/postboard'>Post</Link>
             </li>
             <li>
-                <Link to='/dashboard'>
+                <Link to='/profile'>
                     <i className='fas fa-user' />{' '}
-                    <span className='hide-sm'>Dashboard</span>
+                    <span className='hide-sm'>Profile</span>
                 </Link>
             </li>
             <li>
@@ -43,7 +43,7 @@ const Navbar = ({auth: { isAuthenticated, loading }, logout }) => {
         <nav className='navbar bg-dark'>
             <h1>
                 <Link to='/'>
-                    <i className='fas fa-code' /> DevConnector
+                    <i className='fas fa-code' /> Connect World
                 </Link>
             </h1>
             {!loading && (

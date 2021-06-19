@@ -9,7 +9,10 @@ import Register from "./components/auth/Register";
 import Navbar from './components/layout/Navbar';
 import {loadUser} from "./action/auth";
 import PostBoard from "./components/PostBoard";
-import PostForm from "./components/PostForm";
+import PostForm from "./components/Post/PostForm";
+import Profile from "./components/profile/Profile";
+import EditProfile from "./components/profile/EditProfile";
+import PostPage from "./components/PostPage";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -33,6 +36,9 @@ const App =() => {
                     <Switch>
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/login" component={Login}/>
+                        <Route exact path="/profile" component={Profile}/>
+                        <Route exact path="/editprofile" component={EditProfile}/>
+                        <Route exact path="/profile/:id" component={PostPage}/>
                         <Route exact path="/postboard" component={PostBoard}/>
                         <Route exact path="/addpost" component={PostForm}/>
                     </Switch>
