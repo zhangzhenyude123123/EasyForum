@@ -38,7 +38,7 @@ const App =() => {
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/profile" component={Profile}/>
                         <Route exact path="/editprofile" component={EditProfile}/>
-                        <Route exact path="/profile/:id" component={PostPage}/>
+                        <Route exact path="/posts/:id" component={PostPage}/>
                         <Route exact path="/postboard" component={PostBoard}/>
                         <Route exact path="/addpost" component={PostForm}/>
                     </Switch>

@@ -36,7 +36,6 @@ export const getPosts = () => async (dispatch) => {
 export const getPost = id => async (dispatch) => {
     try {
         const res = await Router.getPost_route(id);
-
         dispatch({
             type: 'GET_POST',
             payload: res.data
