@@ -1,5 +1,6 @@
 import * as Router from '../routers';
 import {disconnect} from "mongoose";
+import {getPostsByUser_route} from "../routers";
 
 export const jumpPost = () => async (dispatch) => {
     dispatch({
@@ -10,15 +11,9 @@ export const jumpPost = () => async (dispatch) => {
 
 // Get posts
 export const getPosts = () => async (dispatch) => {
-    const token = localStorage.token;
-    const config = {
-        headers: {
-            'x-auth-token': token
-        }
-    };
 
     try {
-        const res = await Router.getPosts_route(config);
+        const res = await Router.getPosts_route();
         console.log(res.data);
         dispatch({
             type: 'GET_POSTS',
@@ -29,6 +24,30 @@ export const getPosts = () => async (dispatch) => {
             // type: 'POST_ERROR',
             // payload: { msg: err.response.statusText, status: err.response.status }
         });
+    }
+};
+
+// Get posts by user id
+export const getPostsByUserId = id => async (dispatch) => {
+    const token = localStorage.token;
+    const config = {
+        headers: {
+            'x-auth-token': token
+        }
+    };
+    console.log(id);
+    try {
+        const res = await Router.getPostsByUser_route(id,config);
+        console.log(res.data);
+        dispatch({
+            type: 'GET_POSTS',
+            payload: res.data
+        });
+    } catch (err) {
+        // dispatch({
+            // type: 'POST_ERROR',
+            // payload: { msg: err.response.statusText, status: err.response.status }
+        // });
     }
 };
 

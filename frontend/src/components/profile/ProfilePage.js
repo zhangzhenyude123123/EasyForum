@@ -19,6 +19,7 @@ const ProfilePage = ({profile,user})=> {
                 <p className='fas'>{profile.sex}</p>
                 <p className='fas'>{profile.country}</p>
                 <p className='fas'>{profile.location}</p>
+                <img src={profile.selectedFile} alt='' />
                 <div className='my-2'>
                     <Link to='/editprofile'>
                         <button className='btn btn-danger'>

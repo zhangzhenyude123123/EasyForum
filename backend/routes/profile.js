@@ -19,10 +19,11 @@ router.get('/me', auth, async (req, res) => {
                 _id: null,
                 user: null,
                 __v: 0,
-                    location: null,
+                location: null,
                 country: null,
                 education: null,
-                date: null
+                date: null,
+                selectedFile:null
             }
             return res.json(data);
         }
@@ -55,7 +56,8 @@ router.post(
             sex,
             country,
             education,
-            location
+            location,
+            selectedFile
         } = req.body;
 
         const profileFields = {};
@@ -64,8 +66,7 @@ router.post(
         if (country) profileFields.country = country;
         if (education) profileFields.education = education;
         if (location) profileFields.location = location;
-
-        // console.log(profileFields.user);
+        if (selectedFile) profileFields.selectedFile = selectedFile;
 
         try {
             // Using upsert option (creates new doc if no match is found):

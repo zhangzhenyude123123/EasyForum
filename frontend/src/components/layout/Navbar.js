@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import { logout } from '../../action/auth';
 import {Link} from "react-router-dom";
 
-const Navbar = ({auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({auth: { isAuthenticated, loading,user }, logout }) => {
     const authLinks = (
         <ul>
             <li>
                 <Link to='/community'>Community</Link>
             </li>
             <li>
-                <Link to='/postboard'>Post</Link>
+                <Link to={`/postboard/${user._id}`}>Post</Link>
             </li>
             <li>
                 <Link to='/profile'>
@@ -30,6 +30,9 @@ const Navbar = ({auth: { isAuthenticated, loading }, logout }) => {
 
     const guestLinks = (
         <ul>
+            <li>
+                <Link to='/community'>Community</Link>
+            </li>
             <li>
                 <Link to='/register'>Register</Link>
             </li>

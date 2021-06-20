@@ -44,9 +44,20 @@ router.post(
 );
 
 //get all post
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const posts = await Post.find().sort({ date: -1 });
+        res.json(posts);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+//get all post by userid
+router.get('/user/:id', auth, async (req, res) => {
+    try {
+        const posts = await Post.find({user:req.params.id}).sort({ date: -1 });
         res.json(posts);
     } catch (err) {
         console.error(err.message);

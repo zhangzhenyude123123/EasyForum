@@ -2,7 +2,6 @@ const initialState = {
     posts: [],
     post: null,
     loading: true,
-    id:null,
     error: {}
 };
 

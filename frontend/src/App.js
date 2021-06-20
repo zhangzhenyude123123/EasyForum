@@ -8,7 +8,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Navbar from './components/layout/Navbar';
 import {loadUser} from "./action/auth";
-import PostBoard from "./components/PostBoard";
+import PostBoard from "./components/Post/PostBoard";
 import PostForm from "./components/Post/PostForm";
 import Profile from "./components/profile/Profile";
 import EditProfile from "./components/profile/EditProfile";
@@ -41,7 +41,7 @@ const App =() => {
                         <Route exact path="/profile" component={Profile}/>
                         <Route exact path="/editprofile" component={EditProfile}/>
                         <Route exact path="/posts/:id" component={PostPage}/>
-                        <Route exact path="/postboard" component={PostBoard}/>
+                        <Route exact path="/postboard/:id" component={PostBoard}/>
                         <Route exact path="/addpost" component={PostForm}/>
                     </Switch>
                 </section>

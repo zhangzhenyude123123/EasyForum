@@ -2,7 +2,6 @@ import React, {Fragment, useState} from 'react';
 import {connect, useDispatch} from "react-redux";
 import {createProfile} from "../../action/profile";
 
-
 const EditProfile =() => {
 
     const dispatch = useDispatch();
@@ -12,6 +11,7 @@ const EditProfile =() => {
         country: '',
         education: '',
         location: '',
+        selectedFile: ''
     });
 
     const{sex,country,education,location} = formData;
@@ -23,6 +23,25 @@ const EditProfile =() => {
         dispatch(createProfile(formData));
     };
 
+    const handleImageChange = e =>{
+        e.preventDefault();
+        const reader = new FileReader();
+        const file = e.target.files[0];
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            console.log('filename',file);
+            console.log('fileResult',reader.result);
+            setFormData({
+                ...formData,
+                selectedFile: reader.result
+            });
+
+        }
+        // setFormData({ ...formData, selectedFile: file })
+        // reader.readAsDataURL(file)
+    }
+
+
     return (
         <Fragment>
             <h1 className='large text-primary'>Edit Your Profile</h1>
@@ -30,6 +49,10 @@ const EditProfile =() => {
                 <i className='fas fa-user' /> Add some changes to your profile
             </p>
             <form className='form' onSubmit={e => onSubmit(e)}>
+                <div className="form-group">
+                    <input name='fileSelect' type="file"  multiple onChange={(e)=>handleImageChange(e)}/>
+                </div>
+
                 <div className='form-group'>
                     <input
                         type='text'
