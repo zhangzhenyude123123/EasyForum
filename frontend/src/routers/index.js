@@ -32,12 +32,18 @@ export const updateProfile = (formData,config) => axios.post(profileurl,formData
 
 //TODO: 登出功能
 //TODO: 再点击按钮good或者bad实现，取消取消的情况
-//TODO: 评论新页面，一个message，一个comment，最下面是参与评论
+//TODO: 评论新页面，一个message，一个comment，最下面是参与评论 Success
 //TODO: 点击按钮踩功能
 //TODO: 主页上传照片功能。
-//TODO: 在postPage中，有评论即可显示，没有则不显示，然后最下面是添加表单。
-//TODO: 主页博客功能，显示所有人的blog信息。
+//TODO: 在postPage中，有评论即可显示，没有则不显示，然后最下面是添加表单。 Success
+//TODO: 主页博客功能，显示所有人的blog信息。 Success
 //TODO: 后端路由需要把数据getallpost auth去掉，同时再写一个是得到用户id来进行查找
+//TODO: Message提醒功能
+//TODO: 表单跳转，表单内容清除功能
+//TODO: 错误异常处理问题，在所有项目中
+
+
+
 
 
 

@@ -8,7 +8,7 @@ const Navbar = ({auth: { isAuthenticated, loading }, logout }) => {
     const authLinks = (
         <ul>
             <li>
-                <Link to='/'>Community</Link>
+                <Link to='/community'>Community</Link>
             </li>
             <li>
                 <Link to='/postboard'>Post</Link>
@@ -61,5 +61,4 @@ export default connect(
     GetStateData,
     { logout }
 )(Navbar);
-// export default Navbar
 

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import {getPosts} from "../../action/posts";
 import {connect} from "react-redux";
 import PostItem from "./PostItem";
-import PostPage from "../PostPage";
 import {login} from "../../action/auth";
 
 
@@ -34,10 +33,11 @@ const PostOne = ({ getPosts, post: { posts, loading } }) => {
                         <PostItem key={post._id} post={post} />
                         <Link to={`/posts/${post._id}`} className='btn btn-primary'>
                             {/*Discussion{' '}*/}
-                            {/*{comments.length > 0 && (*/}
-                            {/*    <span className='comment-count'>{comments.length}</span>*/}
-                            {/*)}*/}
-                            comments
+                            <span>comment  </span>
+                            {post.comments.length > 0 && (
+                                <span className='comment-count'>{post.comments.length}</span>
+                            )}
+
                         </Link>
                     </Grid>
                 ))}

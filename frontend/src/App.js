@@ -13,6 +13,8 @@ import PostForm from "./components/Post/PostForm";
 import Profile from "./components/profile/Profile";
 import EditProfile from "./components/profile/EditProfile";
 import PostPage from "./components/PostPage";
+import Landing from "./components/Landing";
+import Community from "./components/Commuity";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -23,7 +25,6 @@ const App =() => {
     const dispatch = useDispatch();
     
     useEffect(() => {
-        // dispatch(loadUser());
         dispatch(loadUser());
     }, [currentId, dispatch]);
 
@@ -31,9 +32,10 @@ const App =() => {
         <Router>
             <Fragment>
                 <Navbar/>
-                {/*<Route exact path="/" component={Landing}/>*/}
                 <section className="container">
                     <Switch>
+                        <Route exact path="/" component={Landing}/>
+                        <Route exact path="/community" component={Community}/>
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/profile" component={Profile}/>

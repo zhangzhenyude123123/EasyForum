@@ -91,7 +91,7 @@ const Register =({checkR}) => {
 // };
 
 const GetStateData = state =>({
-    checkR:  state.auth.checkRegiste
+    checkR:  state.auth.checkRegister
 });
 
 export default connect(
