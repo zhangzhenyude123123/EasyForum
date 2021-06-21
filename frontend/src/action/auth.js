@@ -2,7 +2,7 @@ import setAuthToken from "../tool/setAuthToken";
 import {load_route,register_route,login_route} from "../routers";
 import {setAlert} from "./alert";
 
-//load
+//load the page
 export const loadUser = () => async(dispatch) => {
     if (localStorage.token) {
         setAuthToken(localStorage.token);
@@ -40,8 +40,10 @@ export const register = ({name,email,password}) => async(dispatch) => {
         });
 
     }catch (err){
-        // const errs = err.response.data.errors;
-        //message
+        const errors = err.response.data.errors;
+        if (errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        }
     }
 };
 
@@ -53,7 +55,6 @@ export const login = ({email, password}) => async (dispatch) => {
         }
     };
     const body = JSON.stringify({ email, password });
-    console.log(body);
     try{
         const res = await login_route(body,config);
         dispatch({

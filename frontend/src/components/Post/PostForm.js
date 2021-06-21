@@ -1,17 +1,20 @@
 import React, {Fragment, useState} from "react";
 import {addPost} from "../../action/posts";
 import {connect, useDispatch} from 'react-redux';
+import {Link, Redirect} from "react-router-dom";
 
-const PostForm = () =>{
+const PostForm = ({checkR,user}) =>{
     const [text, setText] = useState('');
 
     const dispatch = useDispatch();
     const onSubmit = async e => {
         e.preventDefault();
         dispatch(addPost({text}));
-        setText('');
     };
 
+    if (checkR) {
+        return <Redirect to={`/postboard/${user._id}`}/>;
+    }
 
     return(
         <Fragment>
@@ -30,10 +33,17 @@ const PostForm = () =>{
                     </div>
                     <input type="submit" className="btn btn-primary" value="Post"/>
                 </form>
+                <Link to={`/postboard/${user._id}`}><button>Return</button></Link>
             </section>
         </Fragment>
     );
 }
 
+const GetStateData = state => ({
+    checkR:  state.post.checkR,
+    user: state.auth.user
+});
 
-export default PostForm
+export default connect(
+    GetStateData
+)(PostForm)

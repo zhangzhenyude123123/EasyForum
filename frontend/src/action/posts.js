@@ -1,6 +1,6 @@
 import * as Router from '../routers';
-import {disconnect} from "mongoose";
-import {getPostsByUser_route} from "../routers";
+import {setAlert} from "./alert";
+
 
 export const jumpPost = () => async (dispatch) => {
     dispatch({
@@ -21,8 +21,8 @@ export const getPosts = () => async (dispatch) => {
         });
     } catch (err) {
         dispatch({
-            // type: 'POST_ERROR',
-            // payload: { msg: err.response.statusText, status: err.response.status }
+            type: 'POST_ERROR',
+            payload: { msg: err.response.statusText, status: err.response.status }
         });
     }
 };
@@ -44,10 +44,10 @@ export const getPostsByUserId = id => async (dispatch) => {
             payload: res.data
         });
     } catch (err) {
-        // dispatch({
-            // type: 'POST_ERROR',
-            // payload: { msg: err.response.statusText, status: err.response.status }
-        // });
+        dispatch({
+            type: 'POST_ERROR',
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
     }
 };
 
@@ -134,7 +134,8 @@ export const addPost = formData => async (dispatch) => {
             type: 'ADD_POST',
             payload: res.data
         });
-        // dispatch(setAlert('Post Created', 'success'));
+        dispatch(setAlert('Post Have Created!!!', 'success'));
+
     } catch (err) {
         dispatch({
             type: 'POST_ERROR',

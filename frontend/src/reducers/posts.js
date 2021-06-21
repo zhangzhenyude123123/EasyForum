@@ -2,7 +2,8 @@ const initialState = {
     posts: [],
     post: null,
     loading: true,
-    error: {}
+    error: {},
+    checkR: false,
 };
 
 export default function(state = initialState, action) {
@@ -13,7 +14,8 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 posts: payload,
-                loading: false
+                loading: false,
+                checkR: false,
             };
         case 'GET_POST':
             return {
@@ -26,13 +28,8 @@ export default function(state = initialState, action) {
                 ...state,
                 posts: [payload, ...state.posts],
                 loading: false,
+                checkR: true,
             };
-        // case 'DELETE_POST':
-        //     return {
-        //         ...state,
-        //         posts: state.posts.filter(post => post._id !== payload),
-        //         loading: false
-        //     };
         case 'POST_ERROR':
             return {
                 ...state,
@@ -53,17 +50,6 @@ export default function(state = initialState, action) {
                 post: { ...state.post, comments: payload },
                 loading: false
             };
-        // case 'REMOVE_COMMENT':
-        //     return {
-        //         ...state,
-        //         post: {
-        //             ...state.post,
-        //             comments: state.post.comments.filter(
-        //                 comment => comment._id !== payload
-        //             )
-        //         },
-        //         loading: false
-        //     };
         default:
             return state;
     }

@@ -16,6 +16,7 @@ import PostPage from "./components/PostPage";
 import Landing from "./components/Landing";
 import Community from "./components/Commuity";
 import Alert from "./components/layout/Alert";
+import LimitedRouter from "./routers/LimitedRouter";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -40,11 +41,11 @@ const App =() => {
                         <Route exact path="/community" component={Community}/>
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/login" component={Login}/>
-                        <Route exact path="/profile" component={Profile}/>
-                        <Route exact path="/editprofile" component={EditProfile}/>
+                        <LimitedRouter exact path="/profile" component={Profile}/>
+                        <LimitedRouter exact path="/editprofile" component={EditProfile}/>
                         <Route exact path="/posts/:id" component={PostPage}/>
-                        <Route exact path="/postboard/:id" component={PostBoard}/>
-                        <Route exact path="/addpost" component={PostForm}/>
+                        <LimitedRouter exact path="/postboard/:id" component={PostBoard}/>
+                        <LimitedRouter exact path="/addpost" component={PostForm}/>
                     </Switch>
                 </section>
             </Fragment>

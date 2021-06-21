@@ -1,8 +1,9 @@
 import React, {Fragment, useState} from 'react';
 import {connect, useDispatch} from "react-redux";
 import {createProfile} from "../../action/profile";
+import {Link, Redirect} from "react-router-dom";
 
-const EditProfile =() => {
+const EditProfile =({checkR}) => {
 
     const dispatch = useDispatch();
 
@@ -38,7 +39,9 @@ const EditProfile =() => {
 
         }
     }
-
+    if (checkR) {
+        return <Redirect to='/profile' />;
+    }
 
     return (
         <Fragment>
@@ -47,71 +50,61 @@ const EditProfile =() => {
                 <i className='fas fa-user' /> Add some changes to your profile
             </p>
             <form className='form' onSubmit={e => onSubmit(e)}>
+                Picture :
                 <div className="form-group">
                     <input name='fileSelect' type="file"  multiple onChange={(e)=>handleImageChange(e)}/>
                 </div>
 
                 <div className='form-group'>
+                    Sex :
                     <input
                         type='text'
                         placeholder='sex'
                         name='sex'
                         value={sex}
-                        onChange={e => onChange(e)}
-                    />
-                    <small className='form-text'>
-                        Could be your own company or one you work for
-                    </small>
+                        onChange={e => onChange(e)}/>
                 </div>
                 <div className='form-group'>
+                    Country :
                     <input
                         type='text'
                         placeholder='country'
                         name='country'
                         value={country}
-                        onChange={e => onChange(e)}
-                    />
-                    <small className='form-text'>
-                        Could be your own company or one you work for
-                    </small>
+                        onChange={e => onChange(e)}/>
                 </div>
                 <div className='form-group'>
+                    Education :
                     <input
                         type='text'
                         placeholder='education'
                         name='education'
                         value={education}
-                        onChange={e => onChange(e)}
-                    />
-                    <small className='form-text'>
-                        Could be your own company or one you work for
-                    </small>
+                        onChange={e => onChange(e)}/>
                 </div>
                 <div className='form-group'>
+                    Location :
                     <input
                         type='text'
                         placeholder='location'
                         name='location'
                         value={location}
-                        onChange={e => onChange(e)}
-                    />
-                    <small className='form-text'>
-                        Could be your own company or one you work for
-                    </small>
+                        onChange={e => onChange(e)}/>
                 </div>
                 <div className='my-2'>
-                    <input type="submit" className="btn btn-danger" value="Edit Account"/>
+                    <input type="submit" className="btn btn-danger" value="Edit"/>
                 </div>
             </form>
+            <Link to={'/profile'}><button>Return</button></Link>
         </Fragment>
     );
 
-};
+}
 
-const GetStateData = state => ({
-    profile: state.profile
+const GetStateData = state =>({
+    checkR:  state.profile.checkR
 });
 
 export default connect(
-    // GetStateData
+    GetStateData
 )(EditProfile)

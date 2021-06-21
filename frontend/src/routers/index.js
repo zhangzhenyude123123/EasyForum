@@ -36,15 +36,16 @@ export const updateProfile = (formData,config) => axios.post(profileurl,formData
 //TODO: 主页博客功能，显示所有人的blog信息。 Success
 //TODO: 主页上传照片功能。 Success
 //TODO: 后端路由需要把数据getallpost auth去掉，同时再写一个是得到用户id来进行查找 (函数成功）Success
+//TODO: Message提醒功能 Success
+//TODO: 点击comment需要先登录 Success
+//TODO: 表单跳转，表单内容清除功能 Success
+//TODO: 错误异常处理问题，在所有项目中 Success
+//TODO: 规定编辑profile时，所有都必须填上，照片可以不用填上？ Success
 
 //TODO: 再点击按钮good或者bad实现，取消取消的情况
 //TODO: 点击按钮踩功能
-//TODO: Message提醒功能
-//TODO: 表单跳转，表单内容清除功能
-//TODO: 错误异常处理问题，在所有项目中
 //TODO: 在post中 退出系统，数据清零。logout 还能显示，应该跳转到主页'/'
-//TODO: 点击comment需要先登录
-//TODO: 规定编辑profile时，所有都必须填上，照片可以不用填上？
+
 
 
 
