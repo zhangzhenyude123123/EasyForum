@@ -15,6 +15,7 @@ import EditProfile from "./components/profile/EditProfile";
 import PostPage from "./components/PostPage";
 import Landing from "./components/Landing";
 import Community from "./components/Commuity";
+import Alert from "./components/layout/Alert";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -33,6 +34,7 @@ const App =() => {
             <Fragment>
                 <Navbar/>
                 <section className="container">
+                    <Alert/>
                     <Switch>
                         <Route exact path="/" component={Landing}/>
                         <Route exact path="/community" component={Community}/>

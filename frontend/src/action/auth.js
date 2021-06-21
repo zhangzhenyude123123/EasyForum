@@ -1,5 +1,6 @@
 import setAuthToken from "../tool/setAuthToken";
 import {load_route,register_route,login_route} from "../routers";
+import {setAlert} from "./alert";
 
 //load
 export const loadUser = () => async(dispatch) => {
@@ -44,6 +45,7 @@ export const register = ({name,email,password}) => async(dispatch) => {
     }
 };
 
+//login
 export const login = ({email, password}) => async (dispatch) => {
     const config = {
         headers: {
@@ -58,9 +60,11 @@ export const login = ({email, password}) => async (dispatch) => {
             type: 'LOGIN_SUCCESS',
             payload: res.data
         });
-        // dispatch(loadUser());
     }catch (err){
-        console.log(err);
+        const errors = err.response.data.errors;
+        if (errors) {
+            errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        }
     }
 }
 

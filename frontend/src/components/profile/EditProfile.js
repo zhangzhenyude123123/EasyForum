@@ -37,8 +37,6 @@ const EditProfile =() => {
             });
 
         }
-        // setFormData({ ...formData, selectedFile: file })
-        // reader.readAsDataURL(file)
     }
 
 
