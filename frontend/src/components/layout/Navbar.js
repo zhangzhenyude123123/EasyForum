@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { logout } from '../../action/auth';
 import {Link} from "react-router-dom";
 
-const Navbar = ({auth: { isAuthenticated, loading,user }, logout }) => {
+const Navbar = ({auth: { isAuthenticated, loading,user}, logout }) => {
+
+
     const authLinks = (
         <ul>
             <li>
@@ -20,9 +22,11 @@ const Navbar = ({auth: { isAuthenticated, loading,user }, logout }) => {
                 </Link>
             </li>
             <li>
-                <a onClick={logout} href='#!'>
+                <a onClick={logout} href=''>
+                    <Link to={'/'}>
                     <i className='fas fa-sign-out-alt' />{' '}
                     <span className='hide-sm'>Logout</span>
+                    </Link>
                 </a>
             </li>
         </ul>

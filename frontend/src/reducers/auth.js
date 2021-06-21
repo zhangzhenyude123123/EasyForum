@@ -3,7 +3,7 @@ const initialState = {
   isAuthenticated: false,
   loading: false,
   user: [],
-  checkRegister: false
+  checkRegister: false,
 };
 
 export default function(state = initialState, action) {
@@ -30,7 +30,7 @@ export default function(state = initialState, action) {
         ...state,
         ...payload,
         isAuthenticated: true,
-        loading: false
+        loading: false,
       };
     case 'LOGOUT':
       localStorage.removeItem('token');
@@ -38,7 +38,7 @@ export default function(state = initialState, action) {
         ...state,
         token: null,
         isAuthenticated: false,
-        loading: false
+        loading: false,
       };
     case 'AUTH_ERROR:':
       return {
