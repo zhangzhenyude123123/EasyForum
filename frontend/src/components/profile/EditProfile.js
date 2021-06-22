@@ -45,57 +45,62 @@ const EditProfile =({checkR}) => {
 
     return (
         <Fragment>
-            <h1 className='large text-primary'>Edit Your Profile</h1>
-            <p className='lead'>
-                <i className='fas fa-user' /> Add some changes to your profile
-            </p>
-            <form className='form' onSubmit={e => onSubmit(e)}>
-                Picture :
-                <div className="form-group">
-                    <input name='fileSelect' type="file"  multiple onChange={(e)=>handleImageChange(e)}/>
-                </div>
+            <Link to={'/profile'}><button className="btn badge-dark">Return</button></Link>
+            <div className="Form-location">
+                <h1 className='large text-primary'>Edit Your Profile</h1>
+                <p className='lead'>
+                    <i className='fas fa-user' /> Change your Profile
+                </p>
+                <form className='form' onSubmit={e => onSubmit(e)}>
 
-                <div className='form-group'>
-                    Sex :
-                    <input
-                        type='text'
-                        placeholder='sex'
-                        name='sex'
-                        value={sex}
-                        onChange={e => onChange(e)}/>
-                </div>
-                <div className='form-group'>
-                    Country :
-                    <input
-                        type='text'
-                        placeholder='country'
-                        name='country'
-                        value={country}
-                        onChange={e => onChange(e)}/>
-                </div>
-                <div className='form-group'>
-                    Education :
-                    <input
-                        type='text'
-                        placeholder='education'
-                        name='education'
-                        value={education}
-                        onChange={e => onChange(e)}/>
-                </div>
-                <div className='form-group'>
-                    Location :
-                    <input
-                        type='text'
-                        placeholder='location'
-                        name='location'
-                        value={location}
-                        onChange={e => onChange(e)}/>
-                </div>
-                <div className='my-2'>
-                    <input type="submit" className="btn btn-danger" value="Edit"/>
-                </div>
-            </form>
-            <Link to={'/profile'}><button>Return</button></Link>
+                    <div className="form-group">
+                        Picture :
+                        <br/>
+                        <input name='fileSelect' type="file"  multiple onChange={(e)=>handleImageChange(e)}/>
+                    </div>
+
+                    <div className='form-group'>
+                        Sex :
+                        <input
+                            type='text'
+                            placeholder='sex'
+                            name='sex'
+                            value={sex}
+                            onChange={e => onChange(e)}/>
+                    </div>
+                    <div className='form-group'>
+                        Country :
+                        <input
+                            type='text'
+                            placeholder='country'
+                            name='country'
+                            value={country}
+                            onChange={e => onChange(e)}/>
+                    </div>
+                    <div className='form-group'>
+                        Education :
+                        <input
+                            type='text'
+                            placeholder='education'
+                            name='education'
+                            value={education}
+                            onChange={e => onChange(e)}/>
+                    </div>
+                    <div className='form-group'>
+                        Location :
+                        <input
+                            type='text'
+                            placeholder='location'
+                            name='location'
+                            value={location}
+                            onChange={e => onChange(e)}/>
+                    </div>
+                    <div className='my-2'>
+                        <input type="submit" className="btn btn-danger" value="Edit"/>
+                    </div>
+                </form>
+            </div>
+
         </Fragment>
     );
 

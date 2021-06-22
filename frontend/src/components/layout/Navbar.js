@@ -10,22 +10,25 @@ const Navbar = ({auth: { isAuthenticated, loading,user}, logout }) => {
     const authLinks = (
         <ul>
             <li>
-                <Link to='/community'>Community</Link>
+                <Link to='/community'>
+                    <span className='hide-sm menu-word'>Community</span>
+                </Link>
             </li>
             <li>
-                <Link to={`/postboard/${user._id}`}>Post</Link>
+                <Link to={`/postboard/${user._id}`}>
+                    <span className='hide-sm menu-word'>Post</span>
+                </Link>
             </li>
             <li>
                 <Link to='/profile'>
                     <i className='fas fa-user' />{' '}
-                    <span className='hide-sm'>Profile</span>
+                    <span className='hide-sm menu-word'>Profile</span>
                 </Link>
             </li>
             <li>
                 <a onClick={logout} href=''>
                     <Link to={'/'}>
-                    <i className='fas fa-sign-out-alt' />{' '}
-                    <span className='hide-sm'>Logout</span>
+                    <span className='hide-sm menu-word logout'>Logout</span>
                     </Link>
                 </a>
             </li>
@@ -35,22 +38,28 @@ const Navbar = ({auth: { isAuthenticated, loading,user}, logout }) => {
     const guestLinks = (
         <ul>
             <li>
-                <Link to='/community'>Community</Link>
+                <Link to='/community'>
+                    <span className='hide-sm menu-word'>Community</span>
+                </Link>
             </li>
             <li>
-                <Link to='/register'>Register</Link>
+                <Link to='/register'>
+                    <span className='hide-sm menu-word'>Register</span>
+                </Link>
             </li>
             <li>
-                <Link to='/login'>Login</Link>
+                <Link to='/login'>
+                    <span className='hide-sm menu-word'>Login</span>
+                </Link>
             </li>
         </ul>
     );
 
     return (
-        <nav className='navbar bg-dark'>
+        <nav id='header' className='navbar'>
             <h1>
                 <Link to='/'>
-                    <i className='fas fa-code' /> Connect World
+                    <i className='fas fa-code logo' /> Connect World
                 </Link>
             </h1>
             {!loading && (

@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import { Grid, CircularProgress } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import {connect, useDispatch} from "react-redux";
 import {getPostsByUserId} from "../../action/posts";
@@ -23,21 +23,17 @@ const PostBoard = ({ post: { posts, loading },match }) => {
     } else {
         return(
             <Fragment>
+
                 <h1 className='large text-primary'>Posts</h1>
                 <p className='lead'>
                     <i className='fas fa-user' /> Your all Posts
                 </p>
                 <Link to='/addpost'><button>AddPost</button></Link>
+
                 <Grid container alignItems="stretch" spacing={3}>
                     {posts.map((post) => (
                         <Grid key={post._id} item xs={12} sm={6} md={6}>
                             <PostItem key={post._id} post={post} />
-                            <Link to={`/posts/${post._id}`} className='btn btn-primary'>
-                                <span>comment  </span>
-                                {post.comments.length > 0 && (
-                                    <span className='comment-count'>{post.comments.length}</span>
-                                )}
-                            </Link>
                         </Grid>
                     ))}
                 </Grid>

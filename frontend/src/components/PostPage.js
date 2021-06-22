@@ -16,7 +16,6 @@ const PostPage = ({post: { post, loading }, match}) => {
     if(loading || post === null){
         return(
             <Fragment>
-                {/*<PostItem post={post} showActions={false} />*/}
                 <p>Not Comment</p>if(
                 <p>this is the Add Comment</p>
             </Fragment>

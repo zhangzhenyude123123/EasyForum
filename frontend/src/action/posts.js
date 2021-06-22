@@ -1,14 +1,6 @@
 import * as Router from '../routers';
 import {setAlert} from "./alert";
 
-
-export const jumpPost = () => async (dispatch) => {
-    dispatch({
-        type: 'Jump',
-        payload: 'Data'
-    });
-}
-
 // Get posts
 export const getPosts = () => async (dispatch) => {
 
@@ -163,7 +155,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
             payload: res.data
         });
 
-        // dispatch(setAlert('Comment Added', 'success'));
+        dispatch(setAlert('Comment Added', 'success'));
     } catch (err) {
         dispatch({
             type: 'POST_ERROR',
@@ -171,3 +163,20 @@ export const addComment = (postId, formData) => async (dispatch) => {
         });
     }
 };
+
+
+// export const getPicByUserId = (userId) => async (dispatch) => {
+//     try {
+//         const res = await Router.addComment_route(postId,formData,config);
+//
+//         dispatch({
+//             type: 'ADD_COMMENT',
+//             payload: res.data
+//         });
+//     } catch (err) {
+//         dispatch({
+//             type: 'POST_ERROR',
+//             payload: { msg: err.response.statusText, status: err.response.status }
+//         });
+//     }
+// };

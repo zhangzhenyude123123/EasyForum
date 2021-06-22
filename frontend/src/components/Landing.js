@@ -7,9 +7,6 @@ const  Landing =() => {
           <div className="dark-overlay">
             <div className="landing-inner">
                 <h1 className="x-large">Connect World</h1>
-                <p className="lead">
-                    Use your creativity to change the world
-                </p>
                 <div className="buttons">
                     <a href="/community" className="btn btn-primary">Open New World</a>
                 </div>

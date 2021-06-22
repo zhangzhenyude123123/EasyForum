@@ -25,13 +25,15 @@ router.post('/', [
         try {
             let user = await User.findOne({email});
             if (user) {
-                return res.status(400).json({errors: [{msg: 'User have existed'}]});
+                return res.status(400).json({errors: [{msg: 'User have existed,Change the email'}]});
             }
 
+            const userpic = 'null';
             user = new User({
                name,
                email,
-               password
+               password,
+               userpic
             });
 
             const salt = await bcrypt.genSalt(10);

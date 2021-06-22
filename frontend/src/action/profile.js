@@ -12,7 +12,6 @@ export const getCurrentProfile = () => async dispatch => {
     };
     try {
         const res = await getProfileMe_route(config);
-        console.log(res.data);
         dispatch({
             type: 'GET_PROFILE',
             payload: res.data

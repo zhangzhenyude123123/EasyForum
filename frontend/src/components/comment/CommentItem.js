@@ -8,10 +8,8 @@ const CommentItem = ({
  }) => (
     <div className='post bg-white p-1 my-1'>
         <div>
-            {/*<Link to={`/profile/${user}`}>*/}
-            {/*    <img className='round-img' src={avatar} alt='' />*/}
+            User:
                 <h4>{comment.name}</h4>
-            {/*</Link>*/}
         </div>
         <div>
             <p className='my-1'>{comment.text}</p>

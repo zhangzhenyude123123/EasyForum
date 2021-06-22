@@ -62,11 +62,14 @@ router.post(
 
         const profileFields = {};
         profileFields.user = req.user.id;
-        if (sex) profileFields.company = sex;
+        if (sex) profileFields.sex = sex;
         if (country) profileFields.country = country;
         if (education) profileFields.education = education;
         if (location) profileFields.location = location;
         if (selectedFile) profileFields.selectedFile = selectedFile;
+
+        const picFields ={};
+        if(selectedFile) picFields.userpic = selectedFile;
 
         try {
             // Using upsert option (creates new doc if no match is found):
@@ -75,6 +78,11 @@ router.post(
                 {$set: profileFields},
                 {new: true, upsert: true}
             );
+            await User.findOneAndUpdate(
+                {_id: req.user.id},
+                {$set: picFields}
+            );
+
             res.json(profile);
         } catch (err) {
             console.error(err.message);

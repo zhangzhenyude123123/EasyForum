@@ -20,7 +20,6 @@ export const register_route = (body,config) => axios.post(registerurl,body,confi
 export const login_route = (body,config) => axios.post(authurl,body,config);
 
 export const getProfileMe_route = (config) => axios.get(profileurl+'/me',config);
-// export const getProfileById = (id) => axios.get(profileurl+`/user/${id}`);
 export const updateProfile = (formData,config) => axios.post(profileurl,formData,config);
 
 
@@ -41,10 +40,15 @@ export const updateProfile = (formData,config) => axios.post(profileurl,formData
 //TODO: 表单跳转，表单内容清除功能 Success
 //TODO: 错误异常处理问题，在所有项目中 Success
 //TODO: 规定编辑profile时，所有都必须填上，照片可以不用填上？ Success
+//TODO: 在post中 退出系统，数据清零。logout 还能显示，应该跳转到主页'/' Success
 
 //TODO: 再点击按钮good或者bad实现，取消取消的情况
 //TODO: 点击按钮踩功能
-//TODO: 在post中 退出系统，数据清零。logout 还能显示，应该跳转到主页'/'
+//TODO: profile 页面美化
+//TODO: psot页面美化
+//TODO: 表单美化
+
+//TODO: register bug, 注册完成后，应该还能再点击register
 
 
 

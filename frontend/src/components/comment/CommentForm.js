@@ -12,7 +12,7 @@ const CommentForm =({postId}) =>{
                 <h3>Leave a Comment</h3>
             </div>
             <form
-                className='form my-1'
+                className='form2 my-1'
                 onSubmit={e => {
                     e.preventDefault();
                     dispatch(addComment(postId, { text }));
