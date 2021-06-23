@@ -1,11 +1,12 @@
 import React, {Fragment,useState} from 'react';
 import {Link,Redirect} from "react-router-dom";
-import {login} from "../../action/auth";
+import {Init, login} from "../../action/auth";
 import {connect, useDispatch} from 'react-redux';
 
 const  Login =({isAuthenticated}) => {
 
     const dispatch = useDispatch();
+    dispatch(Init());
 
     const[formData,setFormData] = useState({
         email: '',
@@ -47,7 +48,7 @@ const  Login =({isAuthenticated}) => {
                                 value={password}
                                 onChange={e => onChange(e)}/>
                         </div>
-                        <input type="submit" className="btn btn-primary" value="Login"/>
+                        <input type="submit" className="btn btn-dark" value="Login"/>
                     </form>
                     <p className="my-1">
                         Don't have an account? <Link to='/Register'>Register</Link>

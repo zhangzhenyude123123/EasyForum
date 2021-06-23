@@ -1,6 +1,5 @@
 import React, {Fragment, useEffect} from 'react';
-import { Grid, CircularProgress } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Grid } from '@material-ui/core';
 import {connect} from "react-redux";
 import {getPosts} from "../action/posts";
 import PostItem from "./Post/PostItem";

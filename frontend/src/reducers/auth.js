@@ -40,12 +40,17 @@ export default function(state = initialState, action) {
         isAuthenticated: false,
         loading: false,
       };
-    case 'AUTH_ERROR:':
+    case 'AUTH_ERROR':
       return {
         ...state,
         isAuthenticated: false,
         loading: false,
         user: []
+      }
+    case 'Init':
+      return {
+        ...state,
+        checkRegister: false
       }
     default:
       return state;

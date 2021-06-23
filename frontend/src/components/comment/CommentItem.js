@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import Moment from "react-moment";
 
 const CommentItem = ({
@@ -21,12 +19,3 @@ const CommentItem = ({
 );
 
 export default CommentItem
-
-//
-// const GetStateData = state => ({
-//     auth: state.auth
-// });
-//
-// export default connect(
-//     GetStateData
-// )(CommentItem);

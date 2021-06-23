@@ -4,6 +4,7 @@ import {useDispatch,connect} from "react-redux";
 import PostItem from "./Post/PostItem";
 import CommentForm from "./comment/CommentForm";
 import CommentItem from "./comment/CommentItem";
+import {Link} from "react-router-dom";
 
 const PostPage = ({post: { post, loading }, match}) => {
 
@@ -16,14 +17,14 @@ const PostPage = ({post: { post, loading }, match}) => {
     if(loading || post === null){
         return(
             <Fragment>
-                <p>Not Comment</p>if(
-                {/*<p>this is the Add Comment</p>*/}
+                <p>Not Comment</p>
             </Fragment>
         )
     }
     else {
         return(
             <Fragment>
+                <Link to={'/community'}><button className="btn badge-dark commment_btn" >Return</button></Link>
                 <PostItem post={post} showActions={false} />
                 <h4>The Comment</h4>
                 <div className='comments'>

@@ -11,7 +11,6 @@ export const getPostsByUser_route = (id,config) => axios.get(posturl+`/user/${id
 export const getPost_route = (id) => axios.get(posturl+`/${id}`);
 
 export const addLike_route = (id) => axios.put(posturl+`/like/${id}`);
-export const removeLike_route = (id) => axios.put(posturl+`/unlike/${id}`);
 export const addUnLike_route = (id) => axios.put(posturl+`/notlike/${id}`);
 
 export const addPost_route = (formData,config) => axios.post(posturl,formData,config);
@@ -47,9 +46,8 @@ export const updateProfile = (formData,config) => axios.post(profileurl,formData
 //TODO: 表单美化 Success
 //TODO: 再点击按钮good或者bad实现，取消取消的情况 Success
 //TODO: 点击按钮踩功能 Success
-
-//TODO: profile 页面美化
-//TODO: register bug, 注册完成后，应该还能再点击register
+//TODO: profile 页面美化  Success
+//TODO: register bug, 注册完成后，应该还能再点击register Success
 
 
 

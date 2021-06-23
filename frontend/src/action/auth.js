@@ -69,7 +69,10 @@ export const login = ({email, password}) => async (dispatch) => {
     }
 }
 
+export const Init = () => dispatch => {
+    dispatch({ type: 'Init' });
+};
+
 export const logout = () => dispatch => {
-    // dispatch({ type: 'CLEAR_PROFILE' });
     dispatch({ type: 'LOGOUT' });
 };

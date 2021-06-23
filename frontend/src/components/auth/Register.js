@@ -33,7 +33,7 @@ const Register =({checkR}) => {
         }
     };
 
-    // jump to the login
+    // Jump to the login
     if (checkR) {
         return <Redirect to='/Login' />;
     }
@@ -83,7 +83,7 @@ const Register =({checkR}) => {
                                 onChange={e => onChange(e)}
                                 required/>
                         </div>
-                        <input type="submit" className="btn btn-primary" value="Register"/>
+                        <input type="submit" className="btn btn-dark" value="Register"/>
                     </form>
                     <p className="my-1">
                         Already have an account? <Link to='/Login'>Login</Link>
@@ -94,9 +94,6 @@ const Register =({checkR}) => {
     );
 };
 
-// Register.propTypes = {
-//     register: PropTypes.func.isRequired,
-// };
 
 const GetStateData = state =>({
     checkR:  state.auth.checkRegister

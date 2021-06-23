@@ -1,6 +1,5 @@
 import React ,{ Fragment }from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { logout } from '../../action/auth';
 import {Link} from "react-router-dom";
 
