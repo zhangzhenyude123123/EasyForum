@@ -9,9 +9,11 @@ const profileurl = url+'/api/profile'
 export const getPosts_route = () => axios.get(posturl);
 export const getPostsByUser_route = (id,config) => axios.get(posturl+`/user/${id}`,config);
 export const getPost_route = (id) => axios.get(posturl+`/${id}`);
+
 export const addLike_route = (id) => axios.put(posturl+`/like/${id}`);
 export const removeLike_route = (id) => axios.put(posturl+`/unlike/${id}`);
-export const addUnLike_route = (id) => axios.put(posturl+`/unlike/${id}`);
+export const addUnLike_route = (id) => axios.put(posturl+`/notlike/${id}`);
+
 export const addPost_route = (formData,config) => axios.post(posturl,formData,config);
 export const addComment_route = (postId,formData,config) => axios.post(posturl+`/comment/${postId}`,formData,config);
 
@@ -41,13 +43,12 @@ export const updateProfile = (formData,config) => axios.post(profileurl,formData
 //TODO: 错误异常处理问题，在所有项目中 Success
 //TODO: 规定编辑profile时，所有都必须填上，照片可以不用填上？ Success
 //TODO: 在post中 退出系统，数据清零。logout 还能显示，应该跳转到主页'/' Success
+//TODO: post页面美化 Success
+//TODO: 表单美化 Success
+//TODO: 再点击按钮good或者bad实现，取消取消的情况 Success
+//TODO: 点击按钮踩功能 Success
 
-//TODO: 再点击按钮good或者bad实现，取消取消的情况
-//TODO: 点击按钮踩功能
 //TODO: profile 页面美化
-//TODO: psot页面美化
-//TODO: 表单美化
-
 //TODO: register bug, 注册完成后，应该还能再点击register
 
 

@@ -44,6 +44,14 @@ export default function(state = initialState, action) {
                 ),
                 loading: false
             };
+        case 'UPDATE_UNLIKES':
+            return {
+                ...state,
+                posts: state.posts.map(post =>
+                    post._id === payload.id ? { ...post, unlikes: payload.unlikes } : post
+                ),
+                loading: false
+            };
         case 'ADD_COMMENT':
             return {
                 ...state,

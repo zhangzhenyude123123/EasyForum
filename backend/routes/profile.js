@@ -14,18 +14,8 @@ router.get('/me', auth, async (req, res) => {
             'name'
         );
         if (!profile) {
-            // return res.status(400).json({ msg: 'There is no profile for this user' });
-            const data = {
-                _id: null,
-                user: null,
-                __v: 0,
-                location: null,
-                country: null,
-                education: null,
-                date: null,
-                selectedFile:null
-            }
-            return res.json(data);
+            //add the 400 status
+            return res.status(400).json({ msg: 'There is no profile for this user' });
         }
 
         res.json(profile);

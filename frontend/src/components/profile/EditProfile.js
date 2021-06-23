@@ -56,7 +56,8 @@ const EditProfile =({checkR}) => {
                     <div className="form-group">
                         Picture :
                         <br/>
-                        <input name='fileSelect' type="file"  multiple onChange={(e)=>handleImageChange(e)}/>
+                        <input name='fileSelect' type="file"
+                               multiple onChange={(e)=>handleImageChange(e)} required/>
                     </div>
 
                     <div className='form-group'>
@@ -66,7 +67,7 @@ const EditProfile =({checkR}) => {
                             placeholder='sex'
                             name='sex'
                             value={sex}
-                            onChange={e => onChange(e)}/>
+                            onChange={e => onChange(e)} required/>
                     </div>
                     <div className='form-group'>
                         Country :
@@ -75,7 +76,7 @@ const EditProfile =({checkR}) => {
                             placeholder='country'
                             name='country'
                             value={country}
-                            onChange={e => onChange(e)}/>
+                            onChange={e => onChange(e)} required/>
                     </div>
                     <div className='form-group'>
                         Education :
@@ -84,7 +85,7 @@ const EditProfile =({checkR}) => {
                             placeholder='education'
                             name='education'
                             value={education}
-                            onChange={e => onChange(e)}/>
+                            onChange={e => onChange(e)} required/>
                     </div>
                     <div className='form-group'>
                         Location :
@@ -93,7 +94,7 @@ const EditProfile =({checkR}) => {
                             placeholder='location'
                             name='location'
                             value={location}
-                            onChange={e => onChange(e)}/>
+                            onChange={e => onChange(e)} required/>
                     </div>
                     <div className='my-2'>
                         <input type="submit" className="btn btn-danger" value="Edit"/>

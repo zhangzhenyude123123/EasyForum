@@ -16,8 +16,11 @@ const PostBoard = ({ post: { posts, loading },match }) => {
     if(loading || posts === null){
         return(
             <Fragment>
-                <Link to='/addpost'><button>AddPost</button></Link>
-                <p>You don't have post</p>
+                <h1 className='large text-primary'>Posts</h1>
+                <p className='lead'>
+                    <p>You don't have post</p>
+                    <Link to='/addpost'><button className='btn btn-dark'>AddPost</button></Link>
+                </p>
             </Fragment>
         );
     } else {
@@ -26,9 +29,10 @@ const PostBoard = ({ post: { posts, loading },match }) => {
 
                 <h1 className='large text-primary'>Posts</h1>
                 <p className='lead'>
-                    <i className='fas fa-user' /> Your all Posts
+                    <p>Your all Posts</p>
+                    <Link to='/addpost'><button className='btn btn-dark'>AddPost</button></Link>
                 </p>
-                <Link to='/addpost'><button>AddPost</button></Link>
+
 
                 <Grid container alignItems="stretch" spacing={3}>
                     {posts.map((post) => (

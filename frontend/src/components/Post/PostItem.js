@@ -1,17 +1,13 @@
-import React, {Fragment, useEffect} from 'react';
-import PropTypes from 'prop-types';
+import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import {addLike, removeLike, addUnLike, getPostsByUserId} from '../../action/posts';
+import {addLike, removeLike, addUnLike} from '../../action/posts';
 import { useDispatch } from 'react-redux';
 
 const PostItem = ({post, showActions }) => {
 
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(getPicByUserId(post.id));
-    // },[getPicByUserId]);
 
     return (
         <div className="position-center">
@@ -28,8 +24,12 @@ const PostItem = ({post, showActions }) => {
                     <div className="job_descp">
                         <h4>{post.text}</h4>
                         <ul className="job-dt">
-                            <li><p>email</p></li>
-                            <li><span>$30 / hr</span></li>
+                            <Link to={`/posts/${post._id}`} className=''>
+                                <li><p>Comment</p></li>
+                            </Link>
+                            {post.comments.length > 0 && (
+                                <li>Number: <span className='comment-count'>{post.comments.length}</span></li>
+                            )}
                         </ul>
                     </div>
                     <div className="job-status-bar">
@@ -47,14 +47,6 @@ const PostItem = ({post, showActions }) => {
                                 </li>
                                 <li>
                                 <button
-                                    onClick={() => dispatch( removeLike(post._id) )}
-                                    type='button'
-                                    className='btn'>
-                                    <i className='fas'/>cancel
-                                </button>
-                                </li>
-                                <li>
-                                <button
                                     onClick={() => dispatch( addUnLike(post._id) )}
                                     type='button'
                                     className='btn'>
@@ -64,15 +56,6 @@ const PostItem = ({post, showActions }) => {
                                 </li>
                             </Fragment>
                             )}
-                            <li>
-                            <Link to={`/posts/${post._id}`} className=''>
-                                <img src=" " alt=""/>
-                                <span>Comment </span>
-                                {post.comments.length > 0 && (
-                                    <span className='comment-count'>{post.comments.length}</span>
-                                )}
-                            </Link>
-                            </li>
                         </ul>
                     </div>
                 </div>

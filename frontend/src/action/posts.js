@@ -71,24 +71,7 @@ export const addLike = id => async (dispatch) => {
     } catch (err) {
         dispatch({
             type: 'POST_ERROR',
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
-    }
-};
-
-// Remove like
-export const removeLike = id => async (dispatch) => {
-    try {
-        const res = await Router.removeLike_route(id);
-
-        dispatch({
-            type: 'UPDATE_LIKES',
-            payload: { id, likes: res.data }
-        });
-    } catch (err) {
-        dispatch({
-            type: 'POST_ERROR',
-            payload: { msg: err.response.statusText, status: err.response.status }
+            // payload: { msg: err.response.statusText, status: err.response.status }
         });
     }
 };
@@ -99,13 +82,13 @@ export const addUnLike = id => async (dispatch) => {
         const res = await Router.addUnLike_route(id);
 
         dispatch({
-            type: 'UPDATE_LIKES',
+            type: 'UPDATE_UNLIKES',
             payload: { id, unlikes: res.data }
         });
     } catch (err) {
         dispatch({
             type: 'POST_ERROR',
-            payload: { msg: err.response.statusText, status: err.response.status }
+            // payload: { msg: err.response.statusText, status: err.response.status }
         });
     }
 };
