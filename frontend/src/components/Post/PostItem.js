@@ -19,7 +19,6 @@ const PostItem = ({post, showActions }) => {
                 <div className="post-bar">
                     <div className="post_topbar">
                         <div className="usy-dt">
-                            <img src="../../img/default_img.webp" alt='' />
                             <div className="usy-name">
                                 <h3>{post.name}</h3>
                                 <span><Moment format='YYYY/MM/DD'>{post.date}</Moment></span>

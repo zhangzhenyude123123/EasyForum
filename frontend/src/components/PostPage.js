@@ -17,7 +17,7 @@ const PostPage = ({post: { post, loading }, match}) => {
         return(
             <Fragment>
                 <p>Not Comment</p>if(
-                <p>this is the Add Comment</p>
+                {/*<p>this is the Add Comment</p>*/}
             </Fragment>
         )
     }
@@ -25,7 +25,7 @@ const PostPage = ({post: { post, loading }, match}) => {
         return(
             <Fragment>
                 <PostItem post={post} showActions={false} />
-                <p>this is the Add Comment</p>
+                <h4>The Comment</h4>
                 <div className='comments'>
                     {post.comments.map(comment => (
                         <CommentItem key={comment._id} comment={comment} postId={post._id} />

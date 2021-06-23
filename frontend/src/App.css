@@ -215,8 +215,13 @@ img {
   border: #ccc solid 1px;
 }
 
-.round-img {
-  border-radius: 50%;
+.profile-img {
+  /*border-radius: 50%;*/
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  padding: 5px;
+  max-width: 20%;
+  max-height: 20%;
 }
 
 .line {
@@ -416,20 +421,66 @@ button {
     display: none;
   }
 
-  /* Profiles Page */
-  .profile {
-    grid-template-columns: 1fr;
-    background: #fff;
+  .profile.s1 {
+    z-index: 99;
+    position: relative;
+    padding: 100px 0;
+  }
+  .profile.s1 .col-left {
+    width: 49%;
+    position: relative;
+  }
+  .profile.s1 .col-right {
+    width: 51%;
+    padding-left: 23px;
+    position: relative;
+  }
+  .profile.s1 .background-white {
+    background-color: #fbf7ff;
+    padding: 40px 15px 0px 25px;
+    border-radius: 42px;
+    -webkit-box-shadow: 0 0 30px 0 rgba(16, 32, 57, 0.05);
+    -moz-box-shadow: 0 0 30px 0 rgba(16, 32, 57, 0.05);
+    box-shadow: 0 0 30px 0 rgba(16, 32, 57, 0.05);
+    margin-top: -470px;
+  }
+  .profile.s1 .fl-btn a {
+    padding: 10px 39px 12px 38px;
+    border: 1px solid #ffffff00;
+  }
+  .profile.s1 .fl-btn a:hover {
+    border: 1px solid #fbbd41;
+    border-radius: 36px;
+  }
+  .profile-list {
+    margin: -20px -15px 0 -25px;
+  }
+  .profile.s1 p {
+    margin-bottom: 63px;
+    padding-right: 50px;
+  }
+
+/*new*/
+
+  .profile-top {
+    /*grid-area: top;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
   }
 
-  #profileimage {
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    -ms-border-radius: 100px;
-    -o-border-radius: 100px;
-    border-radius: 100px;
+  .profile-top img {
+    width: 250px;
   }
+
+  .profile-top .icons a {
+    /*color: #fff;*/
+    margin: 0 0.3rem;
+  }
+  /*new*/
+
 
 
 
@@ -462,26 +513,6 @@ button {
     margin-bottom: 0;
   }
 
-  .profile-grid {
-    grid-template-areas:
-      'top'
-      'about'
-      'exp'
-      'edu'
-      'github';
-  }
-
-  .profile-about .skills {
-    flex-direction: column;
-  }
-
-  .post {
-    grid-template-columns: 1fr;
-  }
-  .post a,
-  .post button {
-    padding: 0.3rem 0.4rem;
-  }
 }
 
 /*head*/
@@ -580,9 +611,9 @@ button {
 }
 
 .mainpage{
-  top: 120%;
+  margin-top: 50%;
   padding-bottom: 100px;
-  position: absolute;
+  position: relative;
 }
 
 /*post section*/
